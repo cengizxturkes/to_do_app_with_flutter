@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/app/pages/home/home_view.dart';
+import 'package:flutter_application_1/app/pages/home/web/web_view.dart';
 
 import '../../domain/entities/to_do_card.dart';
 import '../constants.dart';
@@ -110,14 +112,26 @@ class ToDoContainer extends StatelessWidget {
               child: GestureDetector(
                 behavior: HitTestBehavior.translucent,
                 onTap: () {
-                  showCupertinoDialog(context: context, builder: createDialog);                 
+                  showCupertinoDialog(context: context, builder: createDialog);
                 },
                 child: Icon(
                   Icons.delete,
                   size: 32,
                 ),
               ),
-            )
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: size.height / 6),
+              child: Container(
+                  child: IconButton(
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => WebViewBrowse(toDo)));
+                      },
+                      icon: Icon(Icons.web))),
+            ),
           ],
         ),
         SizedBox(
@@ -125,19 +139,26 @@ class ToDoContainer extends StatelessWidget {
         ),
       ],
     );
-    
   }
-  Widget createDialog(BuildContext context){
+
+  Widget createDialog(BuildContext context) {
     return CupertinoAlertDialog(
-      title: Text("Are You Sure About Delete?"),
+      title: Text("Are You Sure?"),
       actions: [
-        CupertinoDialogAction(child: Text("Yes"),onPressed: (){
-          removeToDo(toDo.id);
-          Navigator.pop(context);
-        },),
-        CupertinoDialogAction(child: Text("No"),onPressed: (){Navigator.pop(context);},),
+        CupertinoDialogAction(
+          child: Text("Yes"),
+          onPressed: () {
+            removeToDo(toDo.id);
+            Navigator.pop(context);
+          },
+        ),
+        CupertinoDialogAction(
+          child: Text("No"),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
       ],
     );
   }
-  
 }

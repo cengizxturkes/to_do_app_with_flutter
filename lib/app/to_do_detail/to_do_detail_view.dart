@@ -4,9 +4,11 @@ import 'package:flutter_application_1/app/constants.dart';
 import 'package:flutter_application_1/app/texts.dart';
 import 'package:flutter_application_1/app/to_do_detail/to_do_detail_controller.dart';
 import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 import '../../domain/entities/to_do_card.dart';
 import '../widgets/default_app_bar.dart';
+
 class ToDoDetailView extends View {
   final ToDoCard toDo;
 
@@ -79,6 +81,7 @@ class _ToDoDetailContainer extends StatelessWidget {
             toDoCard.content,
             style: kContentStyleThin(kBlack),
           ),
+          
         ],
       ),
     );
