@@ -45,7 +45,7 @@ class _DefaultDialogState extends State<DefaultDialog> {
               },
               cursorColor: kPrimaryColor,
               decoration: InputDecoration(
-                hintText: 'Title',
+                hintText: 'Name',
               ),
             ),
             TextFormField(
